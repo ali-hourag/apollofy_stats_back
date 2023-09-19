@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import prismaClient from "../db/prismaClient"
 
-export const getUserData = (req: Request, res: Response) => {
+export const getUserData = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
-        const targetUserData = prismaClient.UserData.findfirst({
-            where: { userId }
+        const targetUserData = await prismaClient.userData.findFirst({
+            where: { userId: userId }
         })
         return res.status(200).send(targetUserData)
     } catch (error) {
@@ -18,7 +18,14 @@ export const createUserData = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
 
-        const newUserData = await prismaClient.UserData.create({
+        const existingUser = await prismaClient.userData.findFirst({
+            where: { userId: userId }
+        })
+        if (existingUser) {
+            return res.status(200).send(existingUser)
+        }
+
+        const newUserData = await prismaClient.userData.create({
             data: {
                 userId,
                 likes: 0,
@@ -42,7 +49,7 @@ export const updateFollowers = async (req: Request, res: Response) => {
             return res.status(404).send('Missing followers')
         }
 
-        const newUserData = await prismaClient.UserData.update({
+        const newUserData = await prismaClient.userData.update({
             where: { userId },
             data: {
                 followers: totalFollowers,
@@ -57,7 +64,7 @@ export const updateFollowers = async (req: Request, res: Response) => {
 export const addViews = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
-        const newUserData = await prismaClient.UserData.update({
+        const newUserData = await prismaClient.userData.update({
             where: { userId },
             data: {
                 views: { increment: 1 }
@@ -74,12 +81,12 @@ export const updateLikes = async (req: Request, res: Response) => {
         const { userId } = req.params;
         const { action } = req.body;
 
-        const targetUser = await prismaClient.UserData.findfirst({
+        const targetUser = await prismaClient.userData.findFirst({
             where: { userId: userId },
         })
 
-        if (action === 'increment') {
-            const newUserData = await prismaClient.UserData.update({
+        if (action == 'increment') {
+            const newUserData = await prismaClient.userData.update({
                 where: { userId },
                 data: {
                     likes: { increment: 1 }
@@ -87,8 +94,8 @@ export const updateLikes = async (req: Request, res: Response) => {
             })
             return res.status(202).send(newUserData)
         }
-        else if (action === 'decrement' && targetUser.likes > 0) {
-            const newUserData = await prismaClient.UserData.update({
+        else if (action == 'decrement' && targetUser!.likes > 0) {
+            const newUserData = await prismaClient.userData.update({
                 where: { userId },
                 data: {
                     likes: { decrement: 1 }
@@ -97,7 +104,7 @@ export const updateLikes = async (req: Request, res: Response) => {
             return res.status(202).send(newUserData)
         }
         else
-            return res.status(400).send('Invalid action' + action)
+            return res.status(400).send('Invalid action ' + action)
 
     } catch (error) {
         return res.status(500).send(error)
@@ -107,7 +114,7 @@ export const updateLikes = async (req: Request, res: Response) => {
 export const addShared = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
-        const newUserData = await prismaClient.UserData.update({
+        const newUserData = await prismaClient.userData.update({
             where: { userId },
             data: {
                 shared: { increment: 1 }

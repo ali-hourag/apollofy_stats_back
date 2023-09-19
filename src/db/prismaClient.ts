@@ -1,5 +1,5 @@
-import Prisma from '@prisma/client';
+import { PrismaClient } from '../../prisma/generated/postgresql'
 
-const prismaClient = new Prisma.PrismaClient();
+const prismaClient = new PrismaClient();
 
 export default prismaClient;
