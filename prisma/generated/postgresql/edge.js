@@ -147,18 +147,16 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
+        "fromEnvVar": "POSTGRES_PRISMA_URL",
         "value": null
       }
     }
   },
-  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL3Bvc3RncmVzcWwiDQp9DQoNCmRhdGFzb3VyY2UgZGIgew0KICBwcm92aWRlciAgICAgICAgICA9ICJwb3N0Z3Jlc3FsIg0KICB1cmwgICAgICAgICAgICAgICA9IGVudigiREFUQUJBU0VfVVJMIikNCiAgc2hhZG93RGF0YWJhc2VVcmwgPSBlbnYoIlNIQURPV19EQVRBQkFTRV9VUkwiKQ0KfQ0KDQptb2RlbCBVc2VyRGF0YSB7DQogIGlkICAgICAgICBJbnQgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkNCiAgdXNlcklkICAgIFN0cmluZyBAdW5pcXVlDQogIGxpa2VzICAgICBJbnQNCiAgdmlld3MgICAgIEludA0KICBmb2xsb3dlcnMgSW50DQogIHNoYXJlZCAgICBJbnQNCn0NCg==",
-  "inlineSchemaHash": "a621394362095f99440cce78019faf1d0f2e47a63e0a7cc4558c737e10d82b46",
-  "noEngine": false
+  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL3Bvc3RncmVzcWwiDQp9DQoNCmRhdGFzb3VyY2UgZGIgew0KICBwcm92aWRlciA9ICJwb3N0Z3Jlc3FsIg0KICAvLyB1cmwgICAgICAgPSBlbnYoIkRBVEFCQVNFX1VSTCIpDQogIC8vIHNoYWRvd0RhdGFiYXNlVXJsID0gZW52KCJTSEFET1dfREFUQUJBU0VfVVJMIikNCg0KICB1cmwgICAgICAgPSBlbnYoIlBPU1RHUkVTX1BSSVNNQV9VUkwiKSAvLyB1c2VzIGNvbm5lY3Rpb24gcG9vbGluZw0KICBkaXJlY3RVcmwgPSBlbnYoIlBPU1RHUkVTX1VSTF9OT05fUE9PTElORyIpIC8vIHVzZXMgYSBkaXJlY3QgY29ubmVjdGlvbg0KfQ0KDQptb2RlbCBVc2VyRGF0YSB7DQogIGlkICAgICAgICBJbnQgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkNCiAgdXNlcklkICAgIFN0cmluZyBAdW5pcXVlDQogIGxpa2VzICAgICBJbnQNCiAgdmlld3MgICAgIEludA0KICBmb2xsb3dlcnMgSW50DQogIHNoYXJlZCAgICBJbnQNCn0NCg==",
+  "inlineSchemaHash": "609be0d6d36a7f8f6460150ec0bfe9905d90477bcf355401286658cfb1701335"
 }
 config.dirname = '/'
 
@@ -168,7 +166,7 @@ defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 
 config.injectableEdgeEnv = () => ({
   parsed: {
-    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
+    POSTGRES_PRISMA_URL: typeof globalThis !== 'undefined' && globalThis['POSTGRES_PRISMA_URL'] || typeof process !== 'undefined' && process.env && process.env.POSTGRES_PRISMA_URL || undefined
   }
 })
 
@@ -179,3 +177,4 @@ if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !
 const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
+
