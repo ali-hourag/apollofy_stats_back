@@ -44,17 +44,20 @@ export const createUserData = async (req: Request, res: Response) => {
 
 export const updateFollowers = async (req: Request, res: Response) => {
     try {
+        console.log("estoy en followers")
         const { userId } = req.params;
-        const { totalFollowers } = req.body;
+        const { content: totalFollowers } = req.body;
 
-        if (!totalFollowers) {
+        console.log(totalFollowers)
+
+        if (totalFollowers < 0) {
             return res.status(404).send('Missing followers')
         }
 
         const newUserData = await prismaClient.userData.update({
             where: { userId },
             data: {
-                followers: totalFollowers,
+                followers: parseInt(totalFollowers),
             }
         })
         return res.status(202).send(newUserData)
@@ -81,7 +84,7 @@ export const addViews = async (req: Request, res: Response) => {
 export const updateLikes = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
-        const { action } = req.body;
+        const { content: action } = req.body;
 
         const targetUser = await prismaClient.userData.findFirst({
             where: { userId: userId },
