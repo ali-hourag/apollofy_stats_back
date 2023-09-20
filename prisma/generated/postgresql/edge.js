@@ -120,7 +120,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\ocre_\\Desktop\\Backend stats Apollofy\\apollofy_stats_back\\prisma\\generated\\postgresql",
+      "value": "C:\\Users\\luisj\\workspace\\apollofy_stats_back\\prisma\\generated\\postgresql",
       "fromEnvVar": null
     },
     "config": {
@@ -156,8 +156,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAicHJpc21hLWNsaWVudC1qcyIKICBvdXRwdXQgICA9ICIuL2dlbmVyYXRlZC9wb3N0Z3Jlc3FsIgp9CgpkYXRhc291cmNlIGRiIHsKICBwcm92aWRlciAgICAgICAgICA9ICJwb3N0Z3Jlc3FsIgogIHVybCAgICAgICAgICAgICAgID0gZW52KCJEQVRBQkFTRV9VUkwiKQogIHNoYWRvd0RhdGFiYXNlVXJsID0gZW52KCJTSEFET1dfREFUQUJBU0VfVVJMIikKfQoKbW9kZWwgVXNlckRhdGEgewogIGlkICAgICAgICBJbnQgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICB1c2VySWQgICAgU3RyaW5nIEB1bmlxdWUKICBsaWtlcyAgICAgSW50CiAgdmlld3MgICAgIEludAogIGZvbGxvd2VycyBJbnQKICBzaGFyZWQgICAgSW50Cn0K",
-  "inlineSchemaHash": "771f654cc2e271d49514afbd4c98a8c191d3be646af70d7d88511c3a5016bb0b",
+  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL3Bvc3RncmVzcWwiDQp9DQoNCmRhdGFzb3VyY2UgZGIgew0KICBwcm92aWRlciAgICAgICAgICA9ICJwb3N0Z3Jlc3FsIg0KICB1cmwgICAgICAgICAgICAgICA9IGVudigiREFUQUJBU0VfVVJMIikNCiAgc2hhZG93RGF0YWJhc2VVcmwgPSBlbnYoIlNIQURPV19EQVRBQkFTRV9VUkwiKQ0KfQ0KDQptb2RlbCBVc2VyRGF0YSB7DQogIGlkICAgICAgICBJbnQgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkNCiAgdXNlcklkICAgIFN0cmluZyBAdW5pcXVlDQogIGxpa2VzICAgICBJbnQNCiAgdmlld3MgICAgIEludA0KICBmb2xsb3dlcnMgSW50DQogIHNoYXJlZCAgICBJbnQNCn0NCg==",
+  "inlineSchemaHash": "a621394362095f99440cce78019faf1d0f2e47a63e0a7cc4558c737e10d82b46",
   "noEngine": false
 }
 config.dirname = '/'
@@ -179,4 +179,3 @@ if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !
 const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
-
