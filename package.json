@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts"
+    "test": "jest --watchAll --collectCoverage",
+    "dev": "nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts",
+    "devz": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "tsc && node ./dist/index.js",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
