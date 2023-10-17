@@ -44,11 +44,9 @@ export const createUserData = async (req: Request, res: Response) => {
 
 export const updateFollowers = async (req: Request, res: Response) => {
     try {
-        console.log("estoy en followers")
         const { userId } = req.params;
         const { content: totalFollowers } = req.body;
 
-        console.log(totalFollowers)
 
         if (totalFollowers < 0) {
             return res.status(404).send('Missing followers')

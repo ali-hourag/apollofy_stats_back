@@ -6,7 +6,6 @@ import { favouritesRouter } from './routes/userdata.routes';
 
 //Create an express application
 const app = express();
-console.log("entro a server")
 
 app.use(cors());
 app.use(express.json());
